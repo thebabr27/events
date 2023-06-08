@@ -1,4 +1,5 @@
 
+    
 document.body.innerHTML = `<div class="modal fade" id="saveEventModal" tabindex="-1" aria-labelledby="saveEventModalLabel" aria-hidden="true">
 <div class="modal-dialog rounded">
   <div class="modal-content bg-sky">
@@ -118,28 +119,30 @@ document.body.innerHTML = `<div class="modal fade" id="saveEventModal" tabindex=
   <div class="card-body">
     <div class="form-group d-none">
         <label for="">Email:</label>
-        <input id="inputEmail" type="email" class="form-control">
+        <input id="inputEmail" type="email" value="thebabr27@gmail.com" class="form-control disabled">
     </div>
-    <div class="form-group d-none">
-        <label for="">Password:</label>
-        <input id="inputPassword" type="password" class="form-control">
-    </div>
-    <div class="form-group mb-3">
-        <label for="">Numero di cellulare:</label>
+    <div class="form-group  ">
+        <label for="">Numero di cellulare dell'utente:</label>
         <div class="input-group">
           <span class="input-group-text" id="basic-addon1">+39</span>
           <input id="inputCellphone" type="number" class="form-control">
         </div>
         <div class="invalid-feedback">
-          Accesso non consentito
+          Accesso non consentito, utente non presente.
         </div>
     </div>
+    <div class="form-group mb-3">
+        <label for="">Password:</label>
+        <input id="inputPassword" type="password" class="form-control">
+    </div>
+    <div class="d-grid gap-2">
     <button id="loginButton" class="btn btn-primary">
         Login
           <div id="loginSpin" class="d-none spinner-border spinner-border-sm" role="status">
               <span class="sr-only"></span>
             </div>
     </button>
+    </div>
   </div>
 </div>
 
@@ -225,6 +228,7 @@ document.body.innerHTML = `<div class="modal fade" id="saveEventModal" tabindex=
   const loginButton = $('#loginGroup button')
   const logoutButton = $("#logoutGroup li a")[0]
   const inputCellphone = $('#inputCellphone')[0]
+  const inputPassword = $('#inputPassword')[0]
   const periodoCheck = $('#periodoCheck')[0]
   const dataCheck = $('#dataCheck')[0]
   const id = $('#id')[0]
@@ -392,6 +396,11 @@ logoutButton.addEventListener("click", e => {
 });
 
 inputCellphone.addEventListener('keydown', key=>{
+  if (key.code=='Enter') {
+    login()
+  }
+})
+inputPassword.addEventListener('keydown', key=>{
   if (key.code=='Enter') {
     login()
   }
@@ -588,11 +597,14 @@ for (let event of events) {
     when = `${getMese(event.when.split("-")[1])} ${event.when.split("-")[0]}`
   }
 
+  let showEditEvents = "d-flex";
+  if (isUserAdmin()) { showEditEvents = "d-none"}
+
   html+=`<div class="card bg-transparent border-0 mt-5">
                   <div class="card-body">
                     <div class="card-header shadow text-center text-light bg-dark semi-transp">
-                      <div class="w-100 d-flex justify-content-end  ">
-                        <span><button  onclick="action(${event.id}, 'edit') "id="editEventButton" style="
+                      <div class="w-100 ${showEditEvents} justify-content-end  ">
+                        <span><button  onclick="action(${event.id}, 'edit') style="
                                 margin-right: -17px;
                                 margin-top: -5px;" 
                                 class="btn">
@@ -743,13 +755,12 @@ function getMese(num) {
   }
 
   function action(id,action) {
-    //console.log(id, action)
+    console.log(id, action)
     let nameToAdd = numbers[phonee]
     let event;
     if (id) {event = events.filter(e=>e.id==id)[0]}
     switch (action) {
       case "addUser":
-        //console.log(numbers)
         users.innerHTML = "";
         for (let person of Object.keys(numbers)) {
           users.innerHTML += 
@@ -784,7 +795,6 @@ function getMese(num) {
   }
 
   function editEvent(event) {
-    if (isUserAdmin()) {
       //console.log("editing",event)
       show([$('.form-group')[0]])
       selectedEvent = event;
@@ -813,7 +823,6 @@ function getMese(num) {
       
       modalButton.click()
       
-    }
   }
 
   function logout() {
@@ -823,9 +832,10 @@ function getMese(num) {
   function login() {
     show([$('#loginSpin')])
     const email = 'thebabr27@gmail.com'
-    const pass = 's@ss@'+pw
+    const pass = inputPassword.value
     const promise = auth.signInWithEmailAndPassword(email, pass);
     phonee = inputCellphone.value;
+    
     promise.catch(e => console.log("err"));
   }
 
@@ -863,4 +873,3 @@ function getMese(num) {
               </div>
               `)
   }
-  pw='10l@'
