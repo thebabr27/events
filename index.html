@@ -74,7 +74,7 @@
   </script>
   <script>
     
-document.body.innerHTML = `<button onclick="work()">Test</button><div class="modal fade" id="saveEventModal" tabindex="-1" aria-labelledby="saveEventModalLabel" aria-hidden="true">
+document.body.innerHTML = `<div class="modal fade" id="saveEventModal" tabindex="-1" aria-labelledby="saveEventModalLabel" aria-hidden="true">
 <div class="modal-dialog rounded">
   <div class="modal-content bg-sky">
     <div class="modal-header">
@@ -336,8 +336,6 @@ setTimeout(t=>{
 addNewUserButton.addEventListener('click', e => {
 aggiungiUtente()
 })
-
-work() { console.log("is working")}
 
 deleteEventButton.addEventListener('click', e => {
 eliminaEvento()
