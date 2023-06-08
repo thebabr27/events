@@ -198,7 +198,7 @@
                   
               </div>
               <div class="w-100 d-flex justify-content-center">
-                <button onclick="action(null,'create')" id="modalButton" data-bs-toggle="modal" data-bs-target="#saveEventModal" style="min-width:69px;" class="mt-3 btn btn-light bg-sky rounded rounded-circle border border-dark">
+                <button onclick="action(null,'create')" id="modalButton" data-bs-toggle="modal" data-bs-target="#saveEventModal" style="width:69px;height:69px;" class="mt-3 btn btn-light bg-sky rounded rounded-circle border border-dark">
                   <h1>+</h1>
                 </button>
               </div>
