@@ -578,14 +578,14 @@
       interested="";
       if (event.interested) {
         for (let person of event.interested) {
-          interested+=`<li>${person}</li>`                  
+          interested+=`<li>${person}<img class="ml-1" style="scale: .5;" src="./src/images/icons/like.svg" alt=""></li>`                  
         }              
       }
     
       booked="";
       if (event.booked) {
         for (let person of event.booked) {
-          booked+=`<li>${person}</li>`       
+          booked+=`<li>${person}<img class="ml-1" style="scale: .5;" src="./src/images/icons/im_in.svg" alt=""></li>`       
         }
       }
       //console.log(event)
