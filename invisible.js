@@ -18,46 +18,57 @@
               <label for="" class="form-label">Titolo</label>
               <input id="titolo" type="text" class="form-control" placeholder="Dare un titolo all'evento">
             </div>
-          <div class="form-group col-12 mb-4">
-            <label for="" class="form-label">Descrizione</label>
-            <textarea name="" id="descrizione" cols="30" rows="5" class="form-control" placeholder="Scrivere una breve descrizione dell'evento"></textarea>
-          </div>
-          <div class="form-group col-12 mb-4">
-            <div class="form-check">
-              <input id="periodoCheck" class="form-check-input" type="radio" name="flexRadioDefault" checked>
-              <label class="form-check-label" for="flexRadioDefault1">
-                Periodo
-              </label>
+            <div class="form-group col-12 mb-4">
+              <label for="" class="form-label">Descrizione</label>
+              <textarea name="" id="descrizione" cols="30" rows="5" class="form-control" placeholder="Scrivere una breve descrizione dell'evento"></textarea>
             </div>
-            <div class="form-check">
-              <input id="dataCheck" class="form-check-input" type="radio" name="flexRadioDefault">
-              <label class="form-check-label" for="flexRadioDefault2">
-                Data esatta
-              </label>
+            <div class="form-group col-12 mb-4">
+              <div class="form-check">
+                <input id="periodoCheck" class="form-check-input" type="radio" name="flexRadioDefault" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Periodo
+                </label>
+              </div>
+              <div class="form-check">
+                <input id="dataCheck" class="form-check-input" type="radio" name="flexRadioDefault">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Data esatta
+                </label>
+              </div>
             </div>
-          </div>
-          <div id="dal" class="d-none form-group col-6 mb-4">
-            <label for="" class="form-label">Dal</label>
-            <input class="form-control" type="date">
-          </div>
-          <div id="al"  class="d-none form-group col-6 mb-4">
-            <label for="" class="form-label">Al</label>
-            <input class="form-control" type="date">
-          </div>
-          <div id="mese" class="form-group col-12 mb-4">
-            <label for="" class="form-label">Mese</label>
-            <input class="form-control" type="month">
-          </div>
-          <div class="form-group col-5">
-            <label for="" class="form-label">Costo (da 1 a 5)</label>
-            <input id="costo" class="form-control" type="number" min=1 max=5>
-          </div>
-          <div class="form-group col-7">
-            <label for="" class="form-label">Impegno fisico (da 1 a 5)</label>
-            <input id="impegno" class="form-control" type="number" min=1 max=5>
-          </div>
+            <div id="dal" class="d-none form-group col-6 mb-4">
+              <label for="" class="form-label">Dal</label>
+              <input class="form-control" type="date">
+            </div>
+            <div id="al"  class="d-none form-group col-6 mb-4">
+              <label for="" class="form-label">Al</label>
+              <input class="form-control" type="date">
+            </div>
+            <div id="mese" class="form-group col-12 mb-4">
+              <label for="" class="form-label">Mese</label>
+              <input class="form-control" type="month">
+            </div>
+            <div class="form-group col-5">
+              <label for="" class="form-label">Costo (da 1 a 5)</label>
+              <input id="costo" class="form-control" type="number" min=1 max=5>
+            </div>
+            <div class="form-group col-7">
+              <label for="" class="form-label">Impegno fisico (da 1 a 5)</label>
+              <input id="impegno" class="form-control" type="number" min=1 max=5>
+            </div>
     
+          </div>
+          <div class="row">                    
+                                
+          <div id="prenotati" class="col-6">
+            <h6>Prenotati:</h6>
+          </div>
+          <div id="interessati" class="col-6">
+            <h6>Interessati:</h6>
+          </div>
+
         </div>
+
         </div>
         <div class="p-3 d-flex justify-content-between">
           <div></div>
@@ -131,8 +142,8 @@
         <div class="form-group mb-3">
             <label for=""><b>Password:</b></label>
             <input id="inputPassword" type="password" class="form-control">
-            <div class="invalid-feedback">
-              Accesso non consentito, utente non presente.
+            <div class="invalid-feedback text-white bg-danger p-1 rounded">
+              <b>Accesso non consentito, utente non presente.</b>
             </div>
         </div>
         <div class="d-grid gap-2">
@@ -252,6 +263,7 @@
       const newUserPhoneNumberInput = $('#newUserPhoneNumber')[0];
       const users = $('#users')[0];
       const userName = $('#userName')[0];
+      let usrNm = "";
     cancelAddNewUserButton.addEventListener('click', e => {  
     setTimeout(t=>{
       $('.modal-dialog')[0].classList.remove("d-none")
@@ -405,7 +417,8 @@
         login()
       }
     })
-    function salvaEvento() {
+
+  function salvaEvento() {
     var ref = firebase.database().ref("events/events")
           .once("value")
           .then(function (snapshot) {
@@ -451,10 +464,11 @@
                   price: costo.value,
                   title: titolo.value,
                   when: when,
-                  organizer: numbers[phonee]
+                  organizer: usrNm
                 }) 
               }
               events = eventi
+              console.log(events)
               firebase.database().ref("events/events").set(events)
               cancelButton.click()
               resetHtml()
@@ -480,18 +494,52 @@
     let numbers = []
     let selectedEvent = null;
     let events = []
+    let appUsers = []
     
     let html = "",euros="",stars="",interested="",booked="";
     
     firebase.auth().onAuthStateChanged(firebaseUser => {
       if (firebaseUser) {
         console.log("logged in");
-    
         var ref = firebase.database().ref("events")
+          .once("value")
+          .then(function (snapshot) {
+            //snapshot.val().phoneNumbers;
+            let usrIndex;
+            if(phonee && snapshot.val().phoneNumbers.filter((e,j)=>{
+              if (e.number.toString()==phonee.toString()) { usrIndex = j; return e }              
+            }).length > 0) {
+              let usrs = [];
+              for (let i=0; i<snapshot.val().phoneNumbers.length;i++) {
+                usrs.push({...snapshot.val().usersNo[i], number: snapshot.val().phoneNumbers[i].number})
+              }
+
+              events = snapshot.val().events;
+              
+              resetHtml();
+              updateHtml();
+              usrNm = usrs[usrIndex].name;
+              userName.innerHTML = `Ciao ${toTitleCase(usrNm)}`
+              if(usrs[usrIndex].role && usrs[usrIndex].role =='admin') {
+                show(['#appGroup'])
+                hide(['#loginGroup'])
+              } else {
+                logout()
+              }
+            } else {
+              $('.invalid-feedback')[0].classList.add("d-block")
+              setTimeout(t=>{$('.invalid-feedback')[0].classList.remove("d-block")},3000)
+              logout()
+            }
+          
+          })
+        /* var ref = firebase.database().ref("events")
           .once("value")
           .then(function (snapshot) {
             try {
               numbers=snapshot.val().phoneNumbers
+              appUsers=snapshot.val().users
+              console.log(appUsers)
               //console.log(numbers)
               if(Object.keys(numbers).indexOf(phonee)>-1) {
                 if (isUserAdmin()) { $('#logoutGroup li')[1].remove() }
@@ -517,7 +565,7 @@
             } catch (err) {
               console.log(err);
             }
-          })
+          }) */
     
     
       } else {
@@ -715,23 +763,23 @@
           case 'like':
             if (!event.interested) { event.interested = [] }
             if (event.interested.length > 0
-            && event.interested.indexOf(numbers[number]) > -1) {
+            && event.interested.indexOf(usrNm) > -1) {
               event.interested.splice(
-                event.interested.indexOf(numbers[number])
+                event.interested.indexOf(usrNm)
               ,1)
             } else {
-              event.interested.push(numbers[number])
+              event.interested.push(usrNm)
             }
             break;
           case 'book':
           if (!event.booked) { event.booked = [] }
             if (event.booked.length > 0
-            && event.booked.indexOf(numbers[number]) > -1) {
+            && event.booked.indexOf(usrNm) > -1) {
               event.booked.splice(
-                event.booked.indexOf(numbers[number])
+                event.booked.indexOf(usrNm)
               ,1)
             } else {
-              event.booked.push(numbers[number])
+              event.booked.push(usrNm)
             }
             break;
           default:
@@ -792,11 +840,13 @@
     
             break;
           case "edit":
+            show(['#prenotati','#interessati']);
             editEvent(event);
             break;
           case "showGroup":
             break;
           case "create":
+            hide(['#prenotati','#interessati']);
             hide([$('.form-group')[0]])
             break;
           default: console.log("unknown action: ",action)
