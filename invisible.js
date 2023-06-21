@@ -1,4 +1,13 @@
+/* 
 
+da fare: 
+
+- se gli eventi hanno delle prenotazioni dev'essere possible per l'admin modificarli mantenendo 
+i prenotati e gli interessati
+
+- aggiungere il dove al form
+
+*/
     
     document.body.innerHTML = `<div class="modal fade" id="saveEventModal" tabindex="-1" aria-labelledby="saveEventModalLabel" aria-hidden="true">
     <div class="modal-dialog rounded">
@@ -315,13 +324,27 @@
     })
     
     function aggiungiUtente() {
-    numbers[newUserPhoneNumberInput.value] = newUserNameInput.value;
-    firebase.database().ref("events/phoneNumbers").set(numbers)
-    newUserPhoneNumberInput.value="";
-    newUserNameInput.value="";
-    cancelAddNewUserButton.click()
-    }
+      var ref = firebase.database().ref("events")
+      .once("value")
+      .then(function (snapshot) {
+        users.innerHTML = "";
+        console.log(snapshot.val())
+       /*  let usrs = [];
+        for (let i=0; i<snapshot.val().phoneNumbers.length;i++) {
+          usrs.push({...snapshot.val().usersNo[i], number: snapshot.val().phoneNumbers[i].number})
+        }
+        
+        for (let person of usrs) {
+
+        } */
+      })
       
+      /* numbers[newUserPhoneNumberInput.value] = newUserNameInput.value;
+      firebase.database().ref("events/phoneNumbers").set(numbers)
+      newUserPhoneNumberInput.value="";
+      newUserNameInput.value="";
+      cancelAddNewUserButton.click()  */
+    }      
       
     function ordinaPerData(arr) {  
     let newArr=[], defArr=[];
@@ -513,19 +536,16 @@
               for (let i=0; i<snapshot.val().phoneNumbers.length;i++) {
                 usrs.push({...snapshot.val().usersNo[i], number: snapshot.val().phoneNumbers[i].number})
               }
-
+              console.log(usrs)
               events = snapshot.val().events;
               
               resetHtml();
               updateHtml();
               usrNm = usrs[usrIndex].name;
               userName.innerHTML = `Ciao ${toTitleCase(usrNm)}`
-              if(usrs[usrIndex].role && usrs[usrIndex].role =='admin') {
-                show(['#appGroup'])
-                hide(['#loginGroup'])
-              } else {
-                logout()
-              }
+              
+              show(['#appGroup'])
+              hide(['#loginGroup'])
             } else {
               $('.invalid-feedback')[0].classList.add("d-block")
               setTimeout(t=>{$('.invalid-feedback')[0].classList.remove("d-block")},3000)
@@ -819,14 +839,22 @@
         resetModal();
         switch (action) {
           case "addUser":
+          var ref = firebase.database().ref("events")
+          .once("value")
+          .then(function (snapshot) {
             users.innerHTML = "";
-            for (let person of Object.keys(numbers)) {
+            let usrs = [];
+            for (let i=0; i<snapshot.val().phoneNumbers.length;i++) {
+              usrs.push({...snapshot.val().usersNo[i], number: snapshot.val().phoneNumbers[i].number})
+            }
+            for (let person of usrs) {
               users.innerHTML += 
               `<div class="mt-4 w-100 d-flex justify-content-between">
-                  <div class="align-self-center"><h5>${person}:</h5>      </div>            
-                  <div><h5>${numbers[person]}</h5></div>
+                  <div class="align-self-center"><h5>${person.name}:</h5>      </div>            
+                  <div><h5>${person.number}</h5></div>
                 </div>`
             }
+          })
           modalButton.click()
             $('.modal-dialog')[0].classList.add("d-none")
             $('.modal-dialog')[1].classList.add("d-none")
