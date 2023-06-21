@@ -549,133 +549,146 @@
     function updateHtml() {
     html = "",euros="",stars="",interested="",booked="",when = "";
     
-    events = ordinaPerData(events);
     
-    for (let event of events) {
-      when = "";
-      euros="";
-      if (event.price) {
-        for (let euro=0;euro<5; euro++) {
-          if (euro<event.price) {
-            euros+=`<img src="./src/images/icons/euro_fill.svg" alt="">  `    
+    if (events && events.length > 0) {
+        events = ordinaPerData(events);
+        for (let event of events) {
+          when = "";
+          euros="";
+          if (event.price) {
+            for (let euro=0;euro<5; euro++) {
+              if (euro<event.price) {
+                euros+=`<img src="./src/images/icons/euro_fill.svg" alt="">  `    
+              }  else {
+                euros+=`<img style="opacity: .4;" src="./src/images/icons/euro_fill.svg" alt="">  `   
+              }                       
+            }                     
+          }
+        
+          stars="";      
+          if (event.phisical) {
+            for (let star=0;star<5; star++) {
+              if (star<event.phisical) {
+                stars+=`<img src="./src/images/icons/star_fill.svg" alt="">  `    
+              }  else {
+                stars+=`<img style="opacity: .6;" src="./src/images/icons/star_stroke.svg" alt="">  `   
+              }                       
+            }                    
+          }
+        
+          interested="";
+          if (event.interested) {
+            for (let person of event.interested) {
+              interested+=`<li>${person}<img class="ml-1" style="scale: .5;" src="./src/images/icons/like.svg" alt=""></li>`                  
+            }              
+          }
+        
+          booked="";
+          if (event.booked) {
+            for (let person of event.booked) {
+              booked+=`<li>${person}<img class="ml-1" style="scale: .5;" src="./src/images/icons/im_in.svg" alt=""></li>`       
+            }
+          }
+          //console.log(event)
+          
+          if (event.when.split(" - ").length > 1) {
+            when = `dal ${event.when.split(" - ")[0].split("-")[2]} ${getMese(event.when.split(" - ")[0].split("-")[1])} 
+            al ${event.when.split(" - ")[1].split("-")[2]} ${getMese(event.when.split(" - ")[1].split("-")[1])} ${event.when.split(" - ")[1].split("-")[0]}`
           }  else {
-            euros+=`<img style="opacity: .4;" src="./src/images/icons/euro_fill.svg" alt="">  `   
-          }                       
-        }                     
-      }
-    
-      stars="";      
-      if (event.phisical) {
-        for (let star=0;star<5; star++) {
-          if (star<event.phisical) {
-            stars+=`<img src="./src/images/icons/star_fill.svg" alt="">  `    
-          }  else {
-            stars+=`<img style="opacity: .6;" src="./src/images/icons/star_stroke.svg" alt="">  `   
-          }                       
-        }                    
-      }
-    
-      interested="";
-      if (event.interested) {
-        for (let person of event.interested) {
-          interested+=`<li>${person}<img class="ml-1" style="scale: .5;" src="./src/images/icons/like.svg" alt=""></li>`                  
-        }              
-      }
-    
-      booked="";
-      if (event.booked) {
-        for (let person of event.booked) {
-          booked+=`<li>${person}<img class="ml-1" style="scale: .5;" src="./src/images/icons/im_in.svg" alt=""></li>`       
-        }
-      }
-      //console.log(event)
-      
-      if (event.when.split(" - ").length > 1) {
-        when = `dal ${event.when.split(" - ")[0].split("-")[2]} ${getMese(event.when.split(" - ")[0].split("-")[1])} 
-        al ${event.when.split(" - ")[1].split("-")[2]} ${getMese(event.when.split(" - ")[1].split("-")[1])} ${event.when.split(" - ")[1].split("-")[0]}`
-      }  else {
-        when = `${getMese(event.when.split("-")[1])} ${event.when.split("-")[0]}`
-      }
-    
-      let showEditEvents = "d-flex";
-      if (isUserAdmin()) { showEditEvents = "d-none"}
-    
-      html+=`<div class="card bg-transparent border-0 mt-5">
-                      <div class="card-body">
-                        <div class="card-header shadow text-center text-light bg-dark semi-transp">
-                          <div class="w-100 ${showEditEvents} justify-content-end">                            
-                            <span><button style="margin-right: -17px;margin-top: -5px;" class="btn" onclick="action(${event.id}, 'edit')"><img src="./src/images/icons/edit_white.svg" alt=""></button></span>
-                          </div>
-                          <h2 class="mt-0">${event.title}</h2>                          
-                          <div class="my-4">
-                            <hr>
-                            <div class="align-self-center"><h5><span> 
-                              ${event.description}
-                            </span> </h5> </div>  
-                          </div>
-                        </div>
-                        <div class="card-body shadow bg-sky px-3 px-md-5">
-                          <div class="mt-4 w-100 d-flex justify-content-between">
-                            <div class="align-self-center"><h5>Organizzato da:</h5>      </div>            
-                            <div><h5>${event.organizer}</h5></div>
-                          </div>
-                          <div class="mt-4 w-100 d-flex justify-content-between">
-                            <div class="align-self-center"><h5>Quando:</h5>      </div>            
-                            <div><h5>${when}</h5></div>
-                          </div>
-                          <div class="mt-4 w-100 d-flex justify-content-between">
-                            <div class="align-self-center"><h5>Costo:</h5>      </div>            
-                            <div class="d-flex">
-                              ${euros}
+            when = `${getMese(event.when.split("-")[1])} ${event.when.split("-")[0]}`
+          }
+        
+          let showEditEvents = "d-flex";
+          if (isUserAdmin()) { showEditEvents = "d-none"}
+        
+            html+=`<div class="card bg-transparent border-0 mt-5">
+                          <div class="card-body">
+                            <div class="card-header shadow text-center text-light bg-dark semi-transp">
+                              <div class="w-100 ${showEditEvents} justify-content-end">                            
+                                <span><button style="margin-right: -17px;margin-top: -5px;" class="btn" onclick="action(${event.id}, 'edit')"><img src="./src/images/icons/edit_white.svg" alt=""></button></span>
+                              </div>
+                              <h2 class="mt-0">${event.title}</h2>                          
+                              <div class="my-4">
+                                <hr>
+                                <div class="align-self-center"><h5><span> 
+                                  ${event.description}
+                                </span> </h5> </div>  
+                              </div>
                             </div>
-                          </div>
-                          <div class="mt-4 w-100 d-flex justify-content-between">
-                            <div class="align-self-center"><h5 class="my-2">Impegno fisico:</h5>      </div>            
-                            <div class="d-flex">
-                              ${stars}
+                            <div class="card-body shadow bg-sky px-3 px-md-5">
+                              <div class="mt-4 w-100 d-flex justify-content-between">
+                                <div class="align-self-center"><h5>Organizzato da:</h5>      </div>            
+                                <div><h5>${event.organizer}</h5></div>
+                              </div>
+                              <div class="mt-4 w-100 d-flex justify-content-between">
+                                <div class="align-self-center"><h5>Quando:</h5>      </div>            
+                                <div><h5>${when}</h5></div>
+                              </div>
+                              <div class="mt-4 w-100 d-flex justify-content-between">
+                                <div class="align-self-center"><h5>Costo:</h5>      </div>            
+                                <div class="d-flex">
+                                  ${euros}
+                                </div>
+                              </div>
+                              <div class="mt-4 w-100 d-flex justify-content-between">
+                                <div class="align-self-center"><h5 class="my-2">Impegno fisico:</h5>      </div>            
+                                <div class="d-flex">
+                                  ${stars}
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </div>
-                        <div class="card-footer shadow bg-sky">
-                          
-                          <div class="my-2 w-100 d-flex justify-content-between">
-                            <div class="d-flex w-100">
-                                <button class="d-none btn btn-link" onclick="action(${event.id}, 'showGroup')">
-                                  <img src="./src/images/icons/group.svg" alt="">
-                                </button>
-                              <button style="text-decoration:none" class="text-dark btn btn-link" onclick="action(${event.id}, 'book')">
-                               <img src="./src/images/icons/person_add.svg" alt="">                               
-                               <h5 style="text-style: none;">Mi Prenoto</h5>
-                              </button>
+                            <div class="card-footer shadow bg-sky">
+                              
+                              <div class="my-2 w-100 d-flex justify-content-between">
+                                <div class="d-flex w-100">
+                                    <button class="d-none btn btn-link" onclick="action(${event.id}, 'showGroup')">
+                                      <img src="./src/images/icons/group.svg" alt="">
+                                    </button>
+                                  <button style="text-decoration:none" class="text-dark btn btn-link" onclick="action(${event.id}, 'book')">
+                                  <img src="./src/images/icons/person_add.svg" alt="">                               
+                                  <h5 style="text-style: none;">Mi Prenoto</h5>
+                                  </button>
+                                </div>
+                                <div class="d-flex w-100 justify-content-end">
+                                  <button style="text-decoration:none" class="text-dark btn btn-link" onclick="action(${event.id}, 'like')">
+                                    <img src="./src/images/icons/like.svg" alt="">                                
+                                  <h5>Mi Interessa</h5>
+                                  </button>
+                                </div>
+                              </div>
                             </div>
-                            <div class="d-flex w-100 justify-content-end">
-                              <button style="text-decoration:none" class="text-dark btn btn-link" onclick="action(${event.id}, 'like')">
-                                <img src="./src/images/icons/like.svg" alt="">                                
-                              <h5>Mi Interessa</h5>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div id="collapse${event.id}" class=" card-footer shadow bg-sky container">
-                          <div class="row">                    
                             
-                            <div class="col-6">
-                              <h6>Prenotati:</h6>
-                              <ul>${booked}
-                              </ul>
+                            <div id="collapse${event.id}" class=" card-footer shadow bg-sky container">
+                              <div class="row">                    
+                                
+                                <div class="col-6">
+                                  <h6>Prenotati:</h6>
+                                  <ul>${booked}
+                                  </ul>
+                                </div>
+                                <div class="col-6">
+                                  <h6>Interessati:</h6>
+                                  <ul>${interested}
+                                  </ul>
+                                </div>
+        
+                              </div>
                             </div>
-                            <div class="col-6">
-                              <h6>Interessati:</h6>
-                              <ul>${interested}
-                              </ul>
-                            </div>
-    
                           </div>
-                        </div>
-                      </div>
-                    </div>`
-    }
+                        </div>`
+              
+          }
+
+        } else {
+          html+=`<div class="card bg-transparent border-0 mt-5">
+          <div class="card-body">
+            <div class="shadow bg-dark semi-transp text-center text-light py-2 rounded">
+              <h4>Non ci sono eventi</h4>
+            </div>
+          </div>
+        </div>
+          `
+        }
     
     eventsWrapper.html(html)
     }
@@ -750,10 +763,12 @@
       }
     
       function action(id,action) {
-        console.log(id, action)
         let nameToAdd = numbers[phonee]
-        let event;
+        let event,edit = true;
         if (id) {event = events.filter(e=>e.id==id)[0]}
+        if (action=='edit') {edit = true}
+        else {edit = false}
+        resetModal();
         switch (action) {
           case "addUser":
             users.innerHTML = "";
@@ -788,19 +803,21 @@
         }
         updateHtml()
       }
+
+      function resetModal() {
+        selectedEvent = event;
+        id.value = "";
+        titolo.value = "";
+        descrizione.value = "";
+        mese.value = "";
+        dal.value = "";
+        al.value = "";
+        periodoCheck.click();
+      }
     
       function editEvent(event) {
-          //console.log("editing",event)
           show([$('.form-group')[0]])
-          selectedEvent = event;
-          id.value = undefined;
-          titolo.value = undefined;
-          descrizione.value = undefined;
-          mese.value = undefined;
-          dal.value = undefined;
-          al.value = undefined;
-          periodoCheck.click();
-    
+          setTimeout(t=>{
           id.value = event.id
           titolo.value = event.title
           descrizione.value = event.description
@@ -815,6 +832,8 @@
           }
           impegno.value = event.phisical
           costo.value = event.price
+
+        },200)
           
           modalButton.click()
           
