@@ -543,7 +543,11 @@ i prenotati e gli interessati
               updateHtml();
               usrNm = usrs[usrIndex].name;
               userName.innerHTML = `Ciao ${toTitleCase(usrNm)}`
-              
+              if(usrs[usrIndex].role && usrs[usrIndex].role =='admin') {
+                
+              } else {
+                $('#logoutGroup li')[1].remove()
+              }
               show(['#appGroup'])
               hide(['#loginGroup'])
             } else {
