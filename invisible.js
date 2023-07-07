@@ -328,7 +328,7 @@ i prenotati e gli interessati
       .once("value")
       .then(function (snapshot) {
         users.innerHTML = "";
-        console.log(snapshot.val())
+        
        /*  let usrs = [];
         for (let i=0; i<snapshot.val().phoneNumbers.length;i++) {
           usrs.push({...snapshot.val().usersNo[i], number: snapshot.val().phoneNumbers[i].number})
@@ -829,7 +829,7 @@ i prenotati e gli interessati
               updateHtml()
     
             } catch (err) {
-              console.log(err);
+              console.log("error",err);
             }
         })
       }
@@ -932,7 +932,7 @@ i prenotati e gli interessati
         const promise = auth.signInWithEmailAndPassword(email, pass);
         phonee = inputCellphone.value;
         
-        promise.catch(e => console.log("err"));
+        promise.catch(e => {console.log("err"); hide(['#loginSpin'])});
       }
     
       function hide(arr) {
