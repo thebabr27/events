@@ -536,7 +536,6 @@ i prenotati e gli interessati
               for (let i=0; i<snapshot.val().phoneNumbers.length;i++) {
                 usrs.push({...snapshot.val().usersNo[i], number: snapshot.val().phoneNumbers[i].number})
               }
-              console.log(usrs)
               events = snapshot.val().events;
               
               resetHtml();
