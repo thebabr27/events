@@ -1,0 +1,339 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Irish+Grover&display=swap');
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+html {
+    background-color: #60B8E8;
+}
+* {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-weight:400;
+  font-style: normal;
+}
+.ig-regular h2 {
+    font-family: "Irish Grover", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 45px;
+}
+.event-image {
+    background-position: center;
+    height: 300px;
+    width: auto;
+    background-image: url(../../assets/images/luccacomics.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+.ig-regular .card-title {
+    font-family: "Irish Grover", serif;
+    font-weight: 400;
+    font-style: normal; 
+}
+.ig-regular .card-text {
+    font-family: "Irish Grover", serif;
+    font-weight: 400;
+    font-style: normal; 
+}
+.ig-regular p {
+    font-family: "Irish Grover", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+}
+.bg {
+    background-image: url("../../assets/images/bg_2x.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.app {
+    height: 100vh;
+    width: 100%; 
+    overflow: hidden;
+}
+html { 
+    overflow: hidden;
+}
+.illu-home ,.andrea-home , .lou-about,  .illu-portfolio-main,
+.illu-portfolio, .andrea-portfolio , .lou-portfolio , .andrea-events {
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform-origin: center;
+}
+.andrea-home, .andrea-portfolio, .andrea-events  { 
+    background-image: url("../../assets/images/andrea.png");   
+}
+.illu-home, .illu-portfolio-main , .illu-portfolio {
+    background-image: url("../../assets/images/illu.png");     
+}
+.lou-about , .lou-portfolio  {
+    background-image: url("../../assets/images/lou.png");
+}
+.illu-home { 
+    width: calc(316.2px * 2);
+    height: calc(440.4px * 2); 
+}
+.illu-portfolio-main {  
+    width: calc(316.2px);
+    height: calc(440.4px); 
+    bottom: -155px;
+    margin-left: -50px;
+    z-index: 1000;
+}
+.andrea-home { 
+    width: calc(350.4px * 2);
+    height: calc(507.6px * 2); 
+    animation-delay: .3s;
+}
+.andrea-events { 
+    margin-bottom: 40px;
+    margin-left: -95px;
+    bottom: 0;
+    width: calc(350.4px* 1.2);
+    height: calc(507.6px* 1.2);
+}
+.andrea-portfolio, .illu-portfolio , .lou-portfolio  { 
+    width: calc(350.4px * .7);
+    height: calc(507.6px * .7 ); 
+    margin-top: -50px;
+}
+.lou-about {
+    width: 110%;
+    height: 110%;
+}
+.figure-home {
+    margin-left: -570px;
+    margin-top: -490px;
+}
+.figure-about {
+    height: 90vh;
+    width: 60vh;
+}
+.figure-portfolio {
+    height: 90vh;
+    width: 60vh;
+}
+.special-card:hover { 
+    transition: .3s;
+    margin: -10px;
+    cursor: pointer;
+    -webkit-box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
+    -moz-box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
+    -o-box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
+    box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
+}
+.special-card {
+    transition: .3s;
+    width: 300px;
+    height: 400px;
+    margin: 10px ;    
+    background: transparent;
+    border-bottom: 50px solid white;
+    border-top: 20px solid white;
+    border-left: 20px solid white;
+    border-right: 20px solid white;
+} 
+.special-card-wrapper { 
+    width: 996px; 
+    height: 100vh; 
+    margin-top: 50px;
+}
+.event-card {
+    max-width: 800px;
+    margin: 35px 20px ;
+    transition: .3s;
+}
+.event-card:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
+    -moz-box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
+    -o-box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
+    box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
+    transition: .3s;
+}
+.event-card .card-header, .event-card .card-footer {
+    background-color: white;
+    border: none;
+} 
+.event-card .card-body {
+    height: 300px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    transition: .3s;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    transition: .3s;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to bottom right, #51a5cf, #8CD3F8 );
+    /* box-shadow: inset 0 0 5px #ffffff;  */
+    border-radius: 10px;
+    transition: .3s;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-image: linear-gradient(to bottom right, #61b1d9, #9bd8f9 );
+    transition: .3s;
+  }
+@media screen and (max-width: 1092px) {
+    .special-card-wrapper {
+        width: 666px; 
+        height: 100vh; 
+    }
+  }
+  @media screen and (max-width: 698px) {
+      .special-card-wrapper {
+          width: 333px; 
+          height: 100vh; 
+      }
+    }
+.bolla-2, .bolla-4 ,
+.bolla-5, .bolla-6 {
+    font-size: 13px;
+} 
+.bolla-2:hover, .bolla-4:hover ,
+.bolla-5:hover, .bolla-6:hover {
+    font-size: 14px; 
+}
+.bolla-1:hover, .bolla-2:hover, .bolla-3:hover ,
+.bolla-4:hover ,.bolla-5:hover, .bolla-6:hover { 
+    opacity: .9;
+}
+.bolla-1, .bolla-2, 
+.bolla-3, .bolla-4 ,
+.bolla-5, .bolla-6 {
+    opacity: .7;
+    background-image: url("../../assets/images/Bolla.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    animation: float 3s ease-in-out infinite;
+    position: absolute;
+    cursor: pointer;
+    transition: .4s; 
+}
+.bolla-1 {
+    margin-left: -180px;
+    margin-top: -20px;
+    width: 120px;
+    height: 120px;
+    font-size: 15px;
+}
+.bolla-1:hover {
+    height: 130px;
+    width: 130px;
+    margin-top: -25px;
+    margin-left: -185px;
+    font-size: 16px;
+}
+.bolla-2 {
+    width: 80px;
+    height: 80px;
+    margin-left: -100px;
+    margin-top: 90px;
+    animation-delay: 1s;
+}
+.bolla-2:hover {
+    width: 90px;
+    height: 90px;
+    margin-left: -105px;
+    margin-top: 85px;
+    animation-delay: 1s; 
+}
+.bolla-3 {
+    width: 100px;
+    height: 100px;
+    margin-left: -200px;
+    margin-top: 105px;
+    animation-delay: .5s;
+    font-size: 14px;
+}
+.bolla-3:hover {
+    width: 110px;
+    height: 110px;
+    margin-left: -205px;
+    margin-top: 100px;
+    animation-delay: .5s; 
+    font-size: 15px;
+}
+.bolla-4 {
+    margin-left: -90px;
+    margin-top: 190px;
+    animation-delay: 1.5s;
+    width: 80px;
+    height: 80px;
+}
+.bolla-4:hover {
+    margin-left: -95px;
+    margin-top: 185px;
+    animation-delay: 1.5s;
+    width: 90px;
+    height: 90px;
+}
+.bolla-5 {
+    margin-left: -170px;
+    margin-top: 215px;
+    animation-delay: .8s;
+    width: 80px;
+    height: 80px;
+}
+.bolla-5:hover {
+    margin-left: -175px;
+    margin-top: 210px;
+    animation-delay: .8s;
+    width: 90px;
+    height: 90px;
+}
+.bolla-6 {
+    margin-left: -110px;
+    margin-top: 285px;
+    animation-delay: 1.8s;
+    width: 80px;
+    height: 80px;
+}
+.bolla-6:hover {
+    margin-left: -115px;
+    margin-top: 280px;
+    animation-delay: 1.8s;
+    width: 90px;
+    height: 90px;
+}
+.bolla-1 div {
+    margin-top: -5px;
+}
+.bolle-wrapper {
+    bottom: 0;
+    right: 0;
+    height: 50vh;
+    z-index: 2000;
+}
