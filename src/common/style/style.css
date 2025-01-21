@@ -44,9 +44,25 @@ html {
     font-style: normal; 
 }
 .ig-regular .card-text {
-    font-family: "Irish Grover", serif;
-    font-weight: 400;
+    font-family: unset;
+    font-weight: 300;
     font-style: normal; 
+    font-size: 15px;
+} 
+.product-card .image-wrapper {    
+    height: 200px;
+}
+.product-card .card-footer {
+    background: white;
+    border: none;
+}
+.product-card .image-wrapper .image {
+    background-image: url("../../assets/images/t-shirt.png");
+    background-size: contain;
+    width: auto;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .ig-regular p {
     font-family: "Irish Grover", serif;
@@ -129,6 +145,7 @@ html {
     height: 90vh;
     width: 60vh;
 }
+.product-card:hover, 
 .special-card:hover { 
     transition: .3s;
     margin: -10px;
@@ -139,20 +156,22 @@ html {
     box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
 }
 .special-card {
-    transition: .3s;
-    width: 300px;
-    height: 400px;
-    margin: 10px ;    
     background: transparent;
+} 
+.special-card, .product-card {
+    transition: .3s;
+    width: 300px!important;
+    height: 400px!important;   
     border-bottom: 50px solid white;
     border-top: 20px solid white;
     border-left: 20px solid white;
     border-right: 20px solid white;
 } 
-.special-card-wrapper { 
+.special-card-wrapper, .product-card-wrapper { 
     width: 996px; 
     height: 100vh; 
     margin-top: 50px;
+    margin-left: 10px;
 }
 .event-card {
     max-width: 800px;
@@ -200,14 +219,53 @@ html {
     background-image: linear-gradient(to bottom right, #61b1d9, #9bd8f9 );
     transition: .3s;
   }
+
+  .loadingBG {
+    background-image: url(../../assets/images/loadingBG.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: auto;
+    height: 100%;
+  }
+
+  .loading-start { 
+    height: 100%;
+    border: 2px solid white;
+    border-radius: 50px;
+    position: absolute;
+    background-image: linear-gradient(#8CD3F8, #7DC1E4);
+  }
+  .loading-inner { 
+    height: 100%;
+    border-top: 4px solid white;
+    border-left: 4px solid white;
+    border-radius: 50px;
+    position: absolute;
+    background-image: linear-gradient(#8CD3F8, #7DC1E4);
+    transform: scale(.8);
+    margin-left: -50px;
+    width: 607px !important;
+
+}
+.loading-percent {
+    text-align: center;
+    position: absolute;
+    z-index: 1000;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
 @media screen and (max-width: 1092px) {
-    .special-card-wrapper {
+    .special-card-wrapper , .product-card-wrapper{
         width: 666px; 
         height: 100vh; 
     }
   }
   @media screen and (max-width: 698px) {
-      .special-card-wrapper {
+    .special-card-wrapper , .product-card-wrapper{
           width: 333px; 
           height: 100vh; 
       }

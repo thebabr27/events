@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../src/common/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+    <div id="loading" class="bg d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
+        <div class="loading-wrapper position-absolute animate__animated "
+            style="height: calc(15px * 4); width: calc(126px * 4);">
+            <div class="loading-start" style="width: 60px;"></div>
+            <!-- <div class="loading-inner" style="width: 60px;"></div> -->
+            <div class="loading-percent"></div>
+            <div class="loadingBG"></div>
+        </div>
+    </div>
+
+    <div class="app bg d-none">
+        <div class="position-absolute bolle-wrapper animate__animated animate__slow animate__fadeInUp">
+            <div class="bolla-1 ">
+                <div class="">Home</div>
+            </div>
+            <div class="bolla-2">
+                <div>About</div>
+            </div>
+            <div class="bolla-3">
+                <div>Shop</div>
+            </div>
+            <div class="bolla-4">
+                <div>Events</div>
+            </div>
+            <div class="bolla-5">
+                <div>Portfolio</div>
+            </div>
+            <div class="bolla-6">
+                <div>Contacts</div>
+            </div>
+        </div>
+        <div id="home"
+            class="animate__animated d-flex d-none flex-column justify-content-center h-100 w-100 align-items-center">
+            <div class="figure-home position-relative">
+                <div class="illu-home  animate__fadeInUp animate__animated "></div>
+                <div class="andrea-home  animate__fadeInUp animate__animated "></div>
+            </div>
+        </div>
+        <div id="detail" class=" container-fluid d-none  p-0 w-100 h-100">
+            <div id="detail-page-title" class="animate__animated mt-5 mb-2 ig-regular text-center">
+                <h2>Detail</h2>
+            </div>
+        </div>
+        <div id="shop" class=" container-fluid d-none  p-0 w-100 h-100">
+            <div id="shop-page-title" class="animate__animated mt-5 mb-2 ig-regular text-center">
+                <h2>Shop</h2>
+            </div>
+            <div class="row w-100 h-100">
+                <div class="col-12 p-0">
+                    <div class="w-100 d-flex justify-content-center " style="overflow-y: auto; 
+    
+    margin-top: 110px;
+    height: calc(100vh - 160px);">
+                        <div class="mb-5 d-flex flex-wrap justify-content-start product-card-wrapper">
+                            <div onclick="changePage(currentPage, 'detail')" class="shadow card animate__animated product-card mx-3 mb-5 ig-regular" 
+                            >
+                                <div style="height: 110%;" class="d-flex flex-column justify-content-between">
+
+                                    <div class="image-wrapper w-100 d-flex flex-column justify-content-center">
+                                        <div class="image"></div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">T-Shirt</h4>
+                                        <small>
+                                            <p class="card-text">Some quick example text to build on the card title and
+                                                make
+                                                up the bulk of the card's content.</p>
+                                        </small>
+                                    </div>
+                                    <div class="card-footer">
+
+                                        <h4 class="card-title">20€</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shadow card animate__animated product-card mx-3 mb-5 ig-regular"
+                            style="animation-delay: .1s;">
+                                <div style="height: 110%;" class="d-flex flex-column justify-content-between">
+
+                                    <div class="image-wrapper w-100 d-flex flex-column justify-content-center">
+                                        <div class="image"></div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">T-Shirt</h4>
+                                        <small>
+                                            <p class="card-text">Some quick example text to build on the card title and
+                                                make
+                                                up the bulk of the card's content.</p>
+                                        </small>
+                                    </div>
+                                    <div class="card-footer">
+
+                                        <h4 class="card-title">20€</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shadow card animate__animated product-card mx-3 mb-5 ig-regular"
+                            style="animation-delay: .2s;">
+                                <div style="height: 110%;" class="d-flex flex-column justify-content-between">
+
+                                    <div class="image-wrapper w-100 d-flex flex-column justify-content-center">
+                                        <div class="image"></div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">T-Shirt</h4>
+                                        <small>
+                                            <p class="card-text">Some quick example text to build on the card title and
+                                                make
+                                                up the bulk of the card's content.</p>
+                                        </small>
+                                    </div>
+                                    <div class="card-footer">
+
+                                        <h4 class="card-title">20€</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shadow card animate__animated product-card mx-3 mb-5 ig-regular"
+                            style="animation-delay: .3s;">
+                                <div style="height: 110%;" class="d-flex flex-column ">
+
+                                    <div class="image-wrapper w-100 d-flex flex-column justify-content-center">
+                                        <div class="image"></div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">T-Shirt</h4>
+                                        <small>
+                                            <p class="card-text">Some quick example text to build on the card title and
+                                                make
+                                                up the bulk of the card's content.</p>
+                                        </small>
+                                    </div>
+                                    <div class="card-footer">
+
+                                        <h4 class="card-title">20€</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="about" class=" container d-none  p-0 w-100 h-100">
+            <div class="row h-100">
+                <div class="col-6 h-100">
+                    <div class="d-flex flex-column justify-content-center h-100 w-100 align-items-center">
+                        <div class="figure-about position-relative">
+                            <div class="lou-about d-none animate__animated "></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 d-flex flex-column justify-content-center">
+                    <div style="
+                    margin-left: -20px;
+                    width: 43vw;">
+                        <div class="card bg-transparent border-0 about-text d-none animate__animated h-100 ">
+                            <div class="card-body ig-regular ">
+                                <h2 class="text-center">About</h2>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, officia
+                                    adipisci. Cum illum accusantium illo! Ipsa, repudiandae aut? Ducimus, esse.
+                                    Corrupti
+                                    obcaecati suscipit fuga. Dolore laboriosam repellat dolor nihil impedit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="portfolio" class=" d-none animate__animated container-fluid p-0 w-100 h-100">
+            <div class="figure-portfolio position-absolute">
+                <div class="illu-portfolio-main animate__animated">
+
+                </div>
+            </div>
+            <div class="row w-100 h-100">
+                <div class="col-12 p-0">
+                    <div class="w-100 d-flex justify-content-center " style="overflow-y: auto; 
+    
+    margin-top: 110px;
+    height: calc(100vh - 160px);">
+                        <div class="d-flex flex-wrap justify-content-start special-card-wrapper">
+                            <div id="card-1" class="shadow card special-card animate__animated mx-3 mb-5">
+                                <div class="card-body d-flex flex-column justify-content-end text-center">
+                                    <div class="andrea-portfolio"></div>
+                                    <div class=" ig-regular " style="  margin-bottom: -75px; ">
+                                        <p>Andrea</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="card-2" class="shadow card special-card animate__animated mx-3 mb-5"
+                                style="animation-delay: .1s;">
+
+                                <div class="card-body d-flex flex-column justify-content-end text-center">
+                                    <div class="illu-portfolio"></div>
+                                    <div class=" ig-regular " style="  margin-bottom: -75px; ">
+                                        <p>Illu</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="card-3" class="shadow card special-card animate__animated mx-3 mb-5"
+                                style="animation-delay: .2s;">
+
+                                <div class="card-body d-flex flex-column justify-content-end text-center">
+                                    <div class="lou-portfolio"></div>
+                                    <div class=" ig-regular " style="  margin-bottom: -75px; ">
+                                        <p>Lou</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="card-4" class="shadow card special-card animate__animated mx-3 mb-5"
+                                style="animation-delay: .3s;">
+
+                                <div class="card-body d-flex flex-column justify-content-end text-center">
+                                    aa
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="events" class=" d-none animate__animated container-fluid p-0 w-100 h-100">
+            <div class="row">
+                <div class="col-8">
+                    <div class="w-100 d-flex justify-content-center ">
+                        <div class="h-100 d-flex flex-column" style="width: 800px;">
+                            <div id="event-page-title" class="animate__animated mt-5 mb-2 ig-regular text-center">
+                                <h2>Events</h2>
+                            </div>
+                            <div class="d-flex flex-column" style="
+                            height: calc(60vh + 100px);
+                            overflow-y: auto;">
+                                <div id="event-1" class="animate__animated shadow card event-card ig-regular ">
+                                    <div class="card-header d-flex justify-content-end">
+                                        <div class=" ">
+                                            <p class="m-0">30 Ottobre - 4 Novembre</p>
+                                        </div>
+                                    </div>
+                                    <div class="event-image"></div>
+                                    <div class="card-body">
+                                        <h2 class="card-title">Lucca Comics</h2>
+                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                            elit.
+                                            Aut
+                                            modi quod
+                                            nesciunt neque! In quaerat nemo sunt maxime est molestias ut ipsam,
+                                            inventore
+                                            odit alias
+                                            iure recusandae minima unde quam!</p>
+
+                                    </div>
+                                </div>
+                                <div id="event-2" style="animation-delay: .2s;"
+                                    class="animate__animated shadow card event-card ig-regular ">
+                                    <div class="card-header d-flex justify-content-end">
+                                        <div class=" ">
+                                            <p class="m-0">30 Ottobre - 4 Novembre</p>
+                                        </div>
+                                    </div>
+                                    <div class="event-image"></div>
+                                    <div class="card-body">
+                                        <h2 class="card-title">Lucca Comics</h2>
+                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                            elit.
+                                            Aut
+                                            modi quod
+                                            nesciunt neque! In quaerat nemo sunt maxime est molestias ut ipsam,
+                                            inventore
+                                            odit alias
+                                            iure recusandae minima unde quam!</p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="andrea-events animate__animated d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        document.getElementsByTagName("html")[0].scrollTop = 0
+        setTimeout(() => {
+            document.getElementsByTagName("html")[0].scrollTop = 0
+        }, 200);
+        const bolla1 = document.getElementsByClassName('bolla-1')[0]
+        const bolla2 = document.getElementsByClassName('bolla-2')[0]
+        const bolla3 = document.getElementsByClassName('bolla-3')[0]
+        const bolla4 = document.getElementsByClassName('bolla-4')[0]
+        const bolla5 = document.getElementsByClassName('bolla-5')[0]
+        const bolla6 = document.getElementsByClassName('bolla-6')[0]
+        const bolleWrapper = document.getElementsByClassName('bolle-wrapper')[0]
+        const figureHome = document.getElementsByClassName('figure-home')[0]
+        const figureAbout = document.getElementsByClassName('figure-about')[0]
+        const aboutText = document.getElementsByClassName('about-text')[0]
+        const illuHome = document.getElementsByClassName('illu-home')[0]
+        const andreaHome = document.getElementsByClassName('andrea-home')[0]
+        const louAbout = document.getElementsByClassName('lou-about')[0]
+        const illuPortfolio = document.getElementsByClassName('illu-portfolio-main')[0]
+        const andreaEvents = document.getElementsByClassName('andrea-events')[0]
+        const eventPageTitle = document.getElementById('event-page-title')
+        const shopPageTitle = document.getElementById('shop-page-title')
+        const detailPageTitle = document.getElementById('detail-page-title')
+        const card1 = document.getElementById('card-1')
+        const card2 = document.getElementById('card-2')
+        const card3 = document.getElementById('card-3')
+        const card4 = document.getElementById('card-4')
+        const event1 = document.getElementById('event-1')
+        const event2 = document.getElementById('event-2')
+        const home = document.getElementById('home')
+        const about = document.getElementById('about')
+        const detail = document.getElementById('detail')
+        const shop = document.getElementById('shop')
+        const portfolio = document.getElementById('portfolio')
+        const loading = document.getElementById('loading')
+        const loadingWrapper = document.getElementsByClassName('loading-wrapper')[0]
+        const events = document.getElementById('events')
+        const loadingInner = document.getElementsByClassName('loading-inner')[0]
+        const loadingStart = document.getElementsByClassName('loading-start')[0]
+        const loadingPercent = document.getElementsByClassName('loading-percent')[0]
+        const app = document.getElementsByClassName('app')[0]
+        const productCards = document.getElementsByClassName('product-card')
+        const portfolioCards = document.getElementsByClassName('special-card')
+        let currentPage = 'loading'
+        bolla1.addEventListener('click', e => {
+            changePage(currentPage, 'home')
+        })
+        bolla2.addEventListener('click', e => {
+            changePage(currentPage, 'about')
+        })
+        bolla3.addEventListener('click', e => {
+            changePage(currentPage, 'shop')
+        }) 
+        bolla4.addEventListener('click', e => {
+            changePage(currentPage, 'events')
+        })
+        bolla5.addEventListener('click', e => {
+            changePage(currentPage, 'portfolio')
+        })
+        bolla6.addEventListener('click', e => {
+            changePage(currentPage, 'contacts')
+        })
+
+        changePage(currentPage, 'loading')
+
+        function animate(oldItems, newItems) {
+            console.log(oldItems, newItems)
+            for (let item of oldItems) {
+                if (item.exitAnimation != "") {
+                    item.item.classList.add(item.exitAnimation)
+                } else {
+                    setTimeout(t => {
+                        item.item.classList.add('d-none')
+                    }, 1200)
+                }
+            }
+            setTimeout(t => {
+                for (let item of newItems) {
+                    if (item.enterAnimation != "") {
+                        item.item.classList.add(item.enterAnimation)
+                        item.item.classList.remove('d-none')
+                    } else {
+                        item.item.classList.remove('d-none')
+                    }
+                }
+                for (let item of oldItems) {
+                    if (item.exitAnimation != "") {
+                        item.item.classList.add('d-none')
+                        item.item.classList.remove(item.exitAnimation)
+                    }
+                }
+            }, 1000)
+        }
+
+        function deanimateAll() {
+            for (let animation of [
+                'animate__fadeIn', 'animate__fadeOut',
+                'animate__fadeInUp', 'animate__fadeOutUp',
+            ]) {
+                for (let item of Array.from(document.getElementsByClassName(animation))) {
+                    item.classList.remove(animation)
+                }
+            }
+        }
+
+        function changePage(oldPage, newPage) {
+            console.log("-", oldPage, "x", newPage);
+            deanimateAll()
+            let animations = []
+            switch (oldPage) {
+                case 'loading':
+                    if (newPage != 'loading') {
+                        animate([
+                            { item: loadingWrapper, exitAnimation: 'animate__fadeOut' },
+                            { item: loading, exitAnimation: '' },
+                        ], [])
+                    }
+                    break;
+                case 'home':
+                    animate([
+                        { item: home, exitAnimation: '' },
+                        { item: andreaHome, exitAnimation: 'animate__fadeOutUp' },
+                        { item: illuHome, exitAnimation: 'animate__fadeOutUp' },
+                    ], [])
+                    break;
+                case 'about':
+                    animate([
+                        { item: about, exitAnimation: '' },
+                        { item: aboutText, exitAnimation: 'animate__fadeOut' },
+                        { item: louAbout, exitAnimation: 'animate__fadeOutUp' },
+                    ], [])
+                    break;
+                case 'portfolio':
+                    animations = [
+                        { item: portfolio, exitAnimation: '' },
+                        { item: illuPortfolio, exitAnimation: 'animate__fadeOutUp' },
+                    ]
+                    for (let element of portfolioCards) {
+                        animations.push(
+                            { item: element, exitAnimation: 'animate__fadeOutUp' }
+                        )
+                    } 
+                    animate(animations, [])
+                    break;
+                case 'events':
+                    animate([
+                        { item: events, exitAnimation: '' },
+                        { item: eventPageTitle, exitAnimation: 'animate__fadeOut' },
+                        { item: event1, exitAnimation: 'animate__fadeOutUp' },
+                        { item: event2, exitAnimation: 'animate__fadeOutUp' },
+                    ], [])
+                    break;
+                case 'shop':
+                    animations = [
+                        { item: shop, exitAnimation: '' },
+                        { item: shopPageTitle, exitAnimation: 'animate__fadeOut' },
+                    ]
+                    for (let element of productCards) {
+                        animations.push(
+                            { item: element, exitAnimation: 'animate__fadeOutUp' }
+                        )
+                    } 
+                    animate(animations, [])
+                    break;
+                case 'detail':
+                    animate([
+                        { item: detail, exitAnimation: '' },
+                        { item: detailPageTitle, exitAnimation: 'animate__fadeOut' },
+                    ], [])
+                    break;
+                default:
+                    console.log("case", oldPage)
+            }
+
+            switch (newPage) {
+                case 'loading':
+                    let barWidth = 50
+                    let interval = setInterval(t => {
+                        number = Math.floor(Math.random() * 30)
+                        if ((barWidth + number) > barWidth) {
+                            barWidth += number
+                            loadingPercent.innerHTML = "<div>" + Math.floor(barWidth / 5) + "%</div>"
+                            loadingStart.setAttribute("style", `width: ${barWidth
+                                }px`)
+                        }
+                        if (barWidth > 490) {
+                            clearInterval(interval)
+                            loadingPercent.innerHTML = "<div>100%</div>"
+                            loadingStart.setAttribute("style", `width:510px!important`)
+                            changePage(currentPage, 'home')
+                        }
+
+                    }, 100)
+                    break;
+                    break;
+                case 'home':
+                    if (oldPage == 'loading') {
+                        animate([], [
+                            { item: app, enterAnimation: '' },
+                            { item: home, enterAnimation: '' },
+                            { item: bolleWrapper, enterAnimation: 'animate__fadeInUp' },
+                            { item: andreaHome, enterAnimation: 'animate__fadeInUp' },
+                            { item: illuHome, enterAnimation: 'animate__fadeInUp' },
+                        ])
+                    } else {
+                        animate([], [
+                            { item: home, enterAnimation: '' },
+                            { item: andreaHome, enterAnimation: 'animate__fadeInUp' },
+                            { item: illuHome, enterAnimation: 'animate__fadeInUp' },
+                        ])
+                    }
+
+                    break;
+                case 'about':
+                    animate([], [
+                        { item: about, enterAnimation: '' },
+                        { item: aboutText, enterAnimation: 'animate__fadeIn' },
+                        { item: louAbout, enterAnimation: 'animate__fadeInUp' },
+                    ])
+                    break;
+                case 'portfolio':
+                    animations = [
+                        { item: portfolio, enterAnimation: '' },
+                        { item: illuPortfolio, enterAnimation: 'animate__fadeInUp' },
+                    ]
+                    for (let element of portfolioCards) {
+                        animations.push(
+                            { item: element, enterAnimation: 'animate__fadeInUp' }
+                        )
+                    } 
+                    animate([], animations)
+                    break;
+                case 'events':
+                    animate([], [
+                        { item: events, enterAnimation: '' },
+                        { item: eventPageTitle, enterAnimation: 'animate__fadeIn' },
+                        { item: event1, enterAnimation: 'animate__fadeInUp' },
+                        { item: event2, enterAnimation: 'animate__fadeInUp' },
+                    ])
+                    break;
+                case 'shop':
+                    animations = [
+                        { item: shop, enterAnimation: '' },
+                        { item: shopPageTitle, enterAnimation: 'animate__fadeIn' },
+                    ]
+                    for (let element of productCards) {
+                        animations.push(
+                            { item: element, enterAnimation: 'animate__fadeInUp' }
+                        )
+                    } 
+                    animate([], animations)
+                    break;
+                case 'detail':
+                    animate([], [
+                        { item: detail, enterAnimation: '' },
+                        { item: detailPageTitle, enterAnimation: 'animate__fadeIn' },
+                    ])
+                    break;
+                default:
+                    console.log("case", oldPage)
+            }
+            currentPage = newPage
+            console.log(currentPage)
+
+        }
+    </script>
+</body>
+
+</html>
