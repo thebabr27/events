@@ -1,7 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Irish+Grover&display=swap');
-
+ 
 @keyframes float {
     0% {
         transform: translateY(0);
@@ -144,8 +144,16 @@ html {
 .figure-portfolio {
     height: 90vh;
     width: 60vh;
+} 
+.product-card:hover {  
+    transition: .3s!important; 
+    transform-origin: center;
+    cursor: pointer;
+    -webkit-box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
+    -moz-box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
+    -o-box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
+    box-shadow: 2px 2px 5px 5px rgba(0,0,0,.2)!important;
 }
-.product-card:hover, 
 .special-card:hover { 
     transition: .3s;
     margin: -10px;
@@ -159,8 +167,10 @@ html {
     background: transparent;
 } 
 .special-card, .product-card {
-    transition: .3s;
-    width: 300px!important;
+    transition: .3s!important;
+    transform: scale(1);
+    transform-origin: center;
+    width: 300px;
     height: 400px!important;   
     border-bottom: 50px solid white;
     border-top: 20px solid white;
@@ -169,7 +179,7 @@ html {
 } 
 .special-card-wrapper, .product-card-wrapper { 
     width: 996px; 
-    height: 100vh; 
+    height: 120vh;
     margin-top: 50px;
     margin-left: 10px;
 }
@@ -260,14 +270,12 @@ html {
 }
 @media screen and (max-width: 1092px) {
     .special-card-wrapper , .product-card-wrapper{
-        width: 666px; 
-        height: 100vh; 
+        width: 666px;  
     }
   }
   @media screen and (max-width: 698px) {
     .special-card-wrapper , .product-card-wrapper{
-          width: 333px; 
-          height: 100vh; 
+          width: 333px;  
       }
     }
 .bolla-2, .bolla-4 ,
@@ -282,9 +290,7 @@ html {
 .bolla-4:hover ,.bolla-5:hover, .bolla-6:hover { 
     opacity: .9;
 }
-.bolla-1, .bolla-2, 
-.bolla-3, .bolla-4 ,
-.bolla-5, .bolla-6 {
+.bolla {
     opacity: .7;
     background-image: url("../../assets/images/Bolla.png");
     background-size: cover;
@@ -300,11 +306,75 @@ html {
     cursor: pointer;
     transition: .4s; 
 }
-.bolla-1 {
-    margin-left: -180px;
-    margin-top: -20px;
+.bolla-l {    
+    width: 90px;
+    height: 90px;
+}
+.bolla-m {
+    width: 80px;
+    height: 80px;
+}
+.bolla-s {
+    width: 70px;
+    height: 70px;
+}
+.bolla-xs {
+    width: 60px;
+    height: 60px;
+}
+.bolla-xl {
     width: 120px;
     height: 120px;
+}
+.bolla-xxl {
+    width: 140px;
+    height: 140px;
+}
+
+.bolla-pos-1, .bolla-pos-2, .bolla-pos-3 , .bolla-pos-4 , .bolla-pos-5 {
+    margin-top: 275px;
+}
+.bolla-pos-6, .bolla-pos-7, .bolla-pos-8 , .bolla-pos-9 , .bolla-pos-10 {
+    margin-top: 235px;
+}
+.bolla-pos-11, .bolla-pos-12, .bolla-pos-13 , .bolla-pos-14 , .bolla-pos-15 {
+    margin-top: 195px;
+} 
+.bolla-pos-16, .bolla-pos-17, .bolla-pos-18 , .bolla-pos-19 , .bolla-pos-20 {
+    margin-top: 155px;
+} 
+.bolla-pos-21, .bolla-pos-22, .bolla-pos-23 , .bolla-pos-24 , .bolla-pos-25 {
+    margin-top: 115px;
+} 
+.bolla-pos-26, .bolla-pos-27, .bolla-pos-28 , .bolla-pos-29 , .bolla-pos-30 {
+    margin-top: 75px;
+} 
+.bolla-pos-31, .bolla-pos-32, .bolla-pos-33 , .bolla-pos-34 , .bolla-pos-35 {
+    margin-top: 35px;
+}  
+
+.bolla-pos-1, .bolla-pos-6, .bolla-pos-11, .bolla-pos-16, .bolla-pos-21, .bolla-pos-26, .bolla-pos-31 {
+    margin-left: -245px; 
+}
+.bolla-pos-2, .bolla-pos-7, .bolla-pos-12, .bolla-pos-17, .bolla-pos-22, .bolla-pos-27, .bolla-pos-32 {
+    margin-left: -205px ;
+    animation-delay: .4s;
+}
+.bolla-pos-3, .bolla-pos-8, .bolla-pos-13, .bolla-pos-18, .bolla-pos-23, .bolla-pos-28, .bolla-pos-33 {
+    margin-left: -165px;
+    animation-delay: .8s;
+}
+.bolla-pos-4, .bolla-pos-9, .bolla-pos-14, .bolla-pos-19, .bolla-pos-24, .bolla-pos-29, .bolla-pos-34 {
+    margin-left: -125px;
+    animation-delay: 1.2s;
+}
+.bolla-pos-5, .bolla-pos-10, .bolla-pos-15, .bolla-pos-20, .bolla-pos-25, .bolla-pos-30, .bolla-pos-35 {
+    margin-left: -85px;
+    animation-delay: 1.6s;
+}
+.bolla-1 {
+    margin-left: -180px;
+    margin-top: -20px; 
     font-size: 15px;
 }
 .bolla-1:hover {
@@ -389,7 +459,7 @@ html {
 .bolla-1 div {
     margin-top: -5px;
 }
-.bolle-wrapper {
+.bolle-wrapper, .bolle-shop-wrapper {
     bottom: 0;
     right: 0;
     height: 50vh;
