@@ -118,8 +118,7 @@ html {
     animation-delay: .3s;
 }
 .andrea-events { 
-    margin-bottom: 40px;
-    margin-left: -95px;
+    margin-bottom: 40px; 
     bottom: 0;
     width: calc(350.4px* 1.2);
     height: calc(507.6px* 1.2);
@@ -136,6 +135,10 @@ html {
 .figure-home {
     margin-left: -570px;
     margin-top: -490px;
+}
+.figure-events {
+    height: 90vh;
+    margin-left:-90px;
 }
 .figure-about {
     height: 90vh;
@@ -272,12 +275,52 @@ html {
     .special-card-wrapper , .product-card-wrapper{
         width: 666px;  
     }
+    .figure-about {
+        transform-origin: left!important;
+        transform: scale(0.8)!important;
+    } 
   }
-  @media screen and (max-width: 698px) {
+@media screen and (max-width: 998px) {
+   
+    .figure-events {
+        height: 100%!important;
+        transform: scale(.8)!important;
+        margin-left: -60px!important;
+    }
+}
+@media screen and (max-width: 768px) {
     .special-card-wrapper , .product-card-wrapper{
           width: 333px;  
-      }
     }
+    .figure-portfolio {
+        transform: scale(.7);
+        transform-origin: bottom;
+        width: 0;
+        z-index: 1000;
+    }
+    .figure-home {
+        transform: scale(.7);
+        transform-origin: center;
+        margin-left: -389px!important;  
+    }
+    .figure-about {
+        margin-top: -300px;
+    }
+    .about-text {
+        margin-top: 50px;
+    } 
+  }
+@media screen and (max-width: 498px) {
+    .loading-wrapper {
+        transform: scale(.6);
+    }
+    .bolle-wrapper-wrapper, .bolle-shop-wrapper-wrapper {
+        transform: scale(.9);
+        transform-origin: bottom;
+        height: 100%    ;
+    }
+    
+}
 .bolla-2, .bolla-4 ,
 .bolla-5, .bolla-6 {
     font-size: 13px;
